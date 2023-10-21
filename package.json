@@ -1,0 +1,20 @@
+{
+  "name": "cucumber_cypress_project",
+  "version": "2.2.0",
+  "description": "BDD Cypress Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Vinita Malik",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.1.5",
+    "cypress": "^12.17.4",
+    "esbuild": "0.16.4"
+  }
+}
