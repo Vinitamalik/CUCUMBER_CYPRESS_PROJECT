@@ -21,14 +21,12 @@ Then("Click Challenging DOM", () => {
 
 Then("Click on RED button and verify that the id of blue, red and green button changes", () => {
   cy.wait(500);
- // var inputs = document.getElementsByClassName('button');
-  // for(var i =0; i< inputs.length; i++){
-  //   cy.log("table"+ inputs[i].id);
-  // }
-  // cy.log("table"+ inputs.value);
-  // cy.log("table"+ inputs.length);
- // const y = x.document.getElementById("$6e533c7c180a");
-  
   cy.xpath('//a[@class="button alert"]').click();
+  cy.xpath('//a[@class="button alert"]').then(($a) => {
+  const creditBalance = $a.text();
+  const id = document.getElementById('$6e533c7c180a').nodeValue;
+  cy.log(creditBalance);
+  cy.log(id);
+   })
   
 });
