@@ -97,3 +97,31 @@ Then(
    
    }
     });
+
+
+    //Test 2
+
+    Then("Click Dynamic Loading", () => {
+      cy.xpath('//a[text()="Dynamic Loading"]').click();
+    });
+
+    Then("Click on Element rendered after the fact", () => {
+      cy.xpath('//a[text()="Example 2: Element rendered after the fact"]').click();
+    });
+
+    Then("Click on Start Button to load the bar and verify that the text should be display as Hello World", () => {
+      cy.xpath('//button[text()="Start"]').click();
+      cy.xpath('//div[text()="Loading... "]').should('be.visible').click();
+     
+        cy.wait(1000);
+        cy.xpath('//h4[text()="Hello World!"]').should('be.visible');
+    
+      
+      
+    
+      
+    }
+    
+
+    );
+  
