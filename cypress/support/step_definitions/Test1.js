@@ -24,9 +24,12 @@ Then("Click on RED button and verify that the id of blue, red and green button c
   cy.xpath('//a[@class="button alert"]').click();
   cy.xpath('//a[@class="button alert"]').then(($a) => {
   const creditBalance = $a.text();
-  const id = document.getElementById('$6e533c7c180a').nodeValue;
   cy.log(creditBalance);
-  cy.log(id);
-   })
+  })
+   cy.xpath('//a[@class="button alert"]')
+  .invoke('attr', 'id')
+  .then((id) => {
+    cy.log(id) 
+  })
   
 });
