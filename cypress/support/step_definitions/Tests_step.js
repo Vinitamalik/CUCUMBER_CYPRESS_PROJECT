@@ -165,10 +165,7 @@ Given("Delete API to delete above created User", () => {
     method: "DELETE",
     url: "https://dummy.restapiexample.com/api/v1/delete/" + User_id,
     failOnStatusCode: false,
-    body: {
-
-    }
-}).then((response) => {
+  }).then((response) => {
   cy.log(response.status);
   cy.log(response.body);
   apiResponse= response.body;
