@@ -6,6 +6,11 @@ const {
   And,
 } = require("@badeball/cypress-cucumber-preprocessor");
 
+var apiStatusCode;
+var apiResponse;
+var User_id;
+
+// Test 1
 Given("Navigate to the URL", () => {
   cy.visit("https://the-internet.herokuapp.com/");
   cy.log("user logged-in");
@@ -125,3 +130,54 @@ Then(
   }
   
 );
+
+//Test 3
+Given("POST API to create a User", () => {
+  cy.request({
+    method: "POST",
+    url: "https://dummy.restapiexample.com/api/v1/create",
+    failOnStatusCode: false,
+    body: {
+
+    }
+}).then((response) => {
+  cy.log(response.status);
+  cy.log(response.body);
+  apiResponse= response.body;
+  apiStatusCode=response.status;
+  var jsonResponse = JSON.stringify(apiResponse);
+  const parsedBody = JSON.parse(jsonResponse); //
+  cy.log("jsonResponse=" + jsonResponse);
+  User_id =apiResponse.data.id;
+  cy.log("user_id" + User_id);
+});
+});
+
+When("user should get response status code as {int}", (StatusCode) => {
+  expect(StatusCode).to.equal(apiStatusCode);
+});
+
+//Test 4
+Given("Delete API to delete above created User", () => {
+
+  cy.log("Delete API to delete above created User" + User_id);
+  cy.request({
+    method: "DELETE",
+    url: "https://dummy.restapiexample.com/api/v1/delete/" + User_id,
+    failOnStatusCode: false,
+    body: {
+
+    }
+}).then((response) => {
+  cy.log(response.status);
+  cy.log(response.body);
+  apiResponse= response.body;
+  apiStatusCode=response.status;
+  var jsonResponse = JSON.stringify(apiResponse);
+  const parsedBody = JSON.parse(jsonResponse); 
+  cy.log("jsonResponse=" + jsonResponse);
+
+});
+});
+
+
